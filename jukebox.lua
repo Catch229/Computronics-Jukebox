@@ -70,10 +70,12 @@ function tapeMonitor()
 		elseif currentMode == 2 then
 			if (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) and currentTrack < #tracks then
 				currentTrack = currentTrack + 1
+				os.queueEvent("tape_change_song")
 			elseif (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) and currentTrack >= #tracks then
 				tape.seek(-tape.getSize())
 				tape.seek(tracks[1].startpos)
 				currentTrack = 1
+				os.queueEvent("tape_change_song")
 			end
 		else
 			if (pos - tracks[#tracks].startpos > tracks[#tracks].length) then
