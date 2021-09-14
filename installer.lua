@@ -1,4 +1,4 @@
-url = "https://raw.githubusercontent.com/Catch229/Computronics-MultiWriter/main/multiTapeWriter.lua"
+url = "https://raw.githubusercontent.com/Catch229/Computronics-Jukebox/main/jukebox.lua"
 programName = "Jukebox"
 fileLoc = "jukebox.lua"
 
