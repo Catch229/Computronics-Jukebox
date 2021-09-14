@@ -1,6 +1,6 @@
 url = "https://raw.githubusercontent.com/Catch229/Computronics-MultiWriter/main/multiTapeWriter.lua"
-programName = "Multi Tape Writer"
-fileLoc = "mtw.lua"
+programName = "Jukebox"
+fileLoc = "jukebox.lua"
 
 term.clear()
 term.setCursorPos(1,1)
