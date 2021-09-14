@@ -64,7 +64,10 @@ function tapeMonitor()
 		pos = -tape.seek(-tape.getSize())
 		tape.seek(pos)
 		if currentMode == 3 then
-			if (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) then
+			if (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) and currentTrack < #tracks then
+				currentTrack = currentTrack + 1
+				os.queueEvent("tape_change_song")
+			elseif (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) then
 				tape.seek(-tracks[currentTrack].length)
 			end
 		elseif currentMode == 2 then
@@ -78,8 +81,13 @@ function tapeMonitor()
 				os.queueEvent("tape_change_song")
 			end
 		else
-			if (pos - tracks[#tracks].startpos > tracks[#tracks].length) then
+			if (pos - tracks[currentTrack].startpos > tracks[currentTrack].length) and currentTrack < #tracks then
+				currentTrack = currentTrack + 1
+				os.queueEvent("tape_change_song")
+			elseif (pos - tracks[#tracks].startpos > tracks[#tracks].length) then
 				tapeState = false;
+				currentTrack = 1
+				os.queueEvent("tape_change_song")
 				os.queueEvent("tape_play_toggle")
 			end
 		end
